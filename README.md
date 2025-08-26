@@ -45,19 +45,7 @@ This project is a practical guide to **common RTOS challenges** and their soluti
     - `TaskDistance` notifies → `TaskLDR`  
 - **Outcome**: Tasks execute in a strict alternating order:
   LDR → Distance → LDR → Distance → ...
-Predictable and perfectly synchronized.  
-
----
-
-### 3. System Robustness → Defensive Programming in Drivers  
-- **Problem**: A faulty sensor (e.g., loose wire on HC-SR04) caused infinite loops, freezing the system.  
-- **Solution**: Drivers were rewritten with **timeouts**.  
-- ADC read (LDR) returns `0xFFFFFFFF` on timeout.  
-- Distance read (HC-SR04) returns negative values (`-1`, `-2`) on timeout.  
-- **Outcome**:  
-- Errors are reported in console instead of freezing.  
-- The system **remains alive** and continues notifying other tasks.  
-- Faults can be recovered automatically when hardware returns to normal.  
+Predictable and perfectly synchronized.    
 
 ---
 
